@@ -31,6 +31,9 @@
         () => import('./components/BuiltInTools/index.vue')
     );
     const SearchView = defineAsyncComponent(() => import('./components/Search/index.vue'));
+    const PromptPresetsView = defineAsyncComponent(
+        () => import('./components/PromptPresets/index.vue')
+    );
     const BrowserView = defineAsyncComponent(() => import('./components/Browser/index.vue'));
     const McpToolsView = defineAsyncComponent(() => import('./components/McpTools/index.vue'));
     const DataManagementView = defineAsyncComponent(
@@ -65,6 +68,11 @@
         search: {
             component: SearchView,
             loadingKey: 'settings.loading.search',
+            scrollable: true,
+        },
+        'prompt-presets': {
+            component: PromptPresetsView,
+            loadingKey: 'settings.loading.promptPresets',
             scrollable: true,
         },
         browser: {

@@ -8,6 +8,7 @@ export type NavigationSection =
     | 'ai-services'
     | 'built-in-tools'
     | 'search'
+    | 'prompt-presets'
     | 'browser'
     | 'mcp-tools'
     | 'data-management';
