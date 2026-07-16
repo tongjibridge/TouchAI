@@ -121,7 +121,15 @@
     const inputHistoryRestoreVersion = ref(0);
     const mcpStore = useMcpStore();
     const settingsStore = useSettingsStore();
-    const { searchWindowDefaultSize } = storeToRefs(settingsStore);
+    const { searchWindowDefaultSize, promptPresets } = storeToRefs(settingsStore);
+
+    const visiblePromptPresets = computed(() => promptPresets.value.presets);
+
+    function handlePresetClick(presetText: string) {
+        if (!presetText) return;
+        searchBar.value?.focus();
+        searchBar.value?.insertTextAtCursor(presetText);
+    }
     const { sessionStatuses, refreshAllStatuses: refreshSessionStatuses } = useSessionStatus();
     const { isPinned, syncWindowPinState, setWindowPinned, toggleWindowPin } = useSearchWindowPin();
     const widgetBridgeWindow = window as Window & {
@@ -1377,6 +1385,27 @@
                 @drag-start="isDragging = true"
                 @drag-end="isDragging = false"
             />
+            <div
+                v-if="
+                    searchViewContentReady &&
+                    sessionHistory.length === 0 &&
+                    visiblePromptPresets.length > 0
+                "
+                class="prompt-presets-row mx-2 mt-1 flex flex-wrap gap-1.5"
+                data-testid="prompt-presets-row"
+            >
+                <button
+                    v-for="preset in visiblePromptPresets"
+                    :key="preset.id"
+                    :data-testid="`prompt-preset-chip-${preset.id}`"
+                    type="button"
+                    class="prompt-preset-chip hover:border-primary-400 hover:bg-primary-50 hover:text-primary-700 inline-flex max-w-[240px] items-center rounded-full border border-neutral-300/70 bg-white/80 px-2.5 py-1 text-xs text-neutral-700 transition-colors"
+                    :title="preset.text"
+                    @click="handlePresetClick(preset.text)"
+                >
+                    <span class="truncate">{{ preset.label }}</span>
+                </button>
+            </div>
             <div
                 v-if="searchViewContentReady && sessionHistory.length === 0"
                 v-show="quickSearchOpen"
