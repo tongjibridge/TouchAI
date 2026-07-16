@@ -29,6 +29,9 @@ jobs:
     resolve:
         name: Resolve prerelease metadata
         runs-on: ubuntu-latest
+        # Fork 仓库默认不运行预发布流程（需要 Cloudflare R2 + Velopack 配置）。
+        # 在仓库 Settings → Variables 里设置 ENABLE_RELEASE=true 即可恢复。
+        if: ${{ vars.ENABLE_RELEASE == 'true' }}
         outputs:
             channel: ${{ steps.release.outputs.channel }}
             version: ${{ steps.release.outputs.version }}
