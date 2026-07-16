@@ -19,6 +19,9 @@ jobs:
     release-please:
         name: Release Please
         runs-on: ubuntu-latest
+        # Fork 仓库默认不运行 release-please（需要 RELEASE_PLEASE_TOKEN + Cloudflare R2）。
+        # 在仓库 Settings → Variables 里设置 ENABLE_RELEASE=true 即可恢复完整的发版流程。
+        if: ${{ vars.ENABLE_RELEASE == 'true' }}
         permissions:
             contents: write
             issues: write
