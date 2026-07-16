@@ -38,6 +38,7 @@ import IconPlus from '~icons/lucide/plus';
 import IconRefresh from '~icons/lucide/refresh-cw';
 import IconSearch from '~icons/lucide/search';
 import IconCog from '~icons/lucide/settings';
+import IconSparkles from '~icons/lucide/sparkles';
 import IconStop from '~icons/lucide/square';
 import IconTrash from '~icons/lucide/trash-2';
 import IconError from '~icons/lucide/triangle-alert';
@@ -84,6 +85,7 @@ export const appIconMap = {
     plus: IconPlus,
     refresh: IconRefresh,
     search: IconSearch,
+    sparkles: IconSparkles,
     settings: IconCog,
     stop: IconStop,
     tool: IconBriefcase,
