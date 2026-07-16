@@ -15,9 +15,11 @@ describe('settings registry', () => {
         expect(JSON_SETTINGS_SECTIONS.map((section) => section.key)).toEqual([
             'browser_settings',
             'search_settings',
+            'prompt_presets',
         ]);
         expect(findJsonSettingsSection('browser_settings')?.stateKey).toBe('browserSettings');
         expect(findJsonSettingsSection('search_settings')?.stateKey).toBe('searchSettings');
+        expect(findJsonSettingsSection('prompt_presets')?.stateKey).toBe('promptPresets');
         expect(findJsonSettingsSection('browser_settings')).toMatchObject({
             version: 1,
             store: {
@@ -32,6 +34,13 @@ describe('settings registry', () => {
                 updaterName: 'updateSearchSettings',
             },
         });
+        expect(findJsonSettingsSection('prompt_presets')).toMatchObject({
+            version: 1,
+            store: {
+                computedName: 'promptPresets',
+                updaterName: 'updatePromptPresets',
+            },
+        });
         expect(findJsonSettingsSection('browser_settings')?.ui).toMatchObject({
             sectionId: 'browser',
             icon: 'globe',
@@ -39,6 +48,10 @@ describe('settings registry', () => {
         expect(findJsonSettingsSection('search_settings')?.ui).toMatchObject({
             sectionId: 'search',
             icon: 'search',
+        });
+        expect(findJsonSettingsSection('prompt_presets')?.ui).toMatchObject({
+            sectionId: 'prompt-presets',
+            icon: 'sparkles',
         });
         expect(findJsonSettingsSection('language')).toBeNull();
     });
