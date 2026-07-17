@@ -64,6 +64,7 @@ describe('Settings navigation sidebar i18n', () => {
             'Providers and models',
             'Built-in tools',
             'Search',
+            'Prompt Presets',
             'Browser Control',
             'MCP tools',
             'Data management',

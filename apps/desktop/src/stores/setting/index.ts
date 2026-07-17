@@ -4,6 +4,7 @@ import type { AppUpdateChannel } from '@/config/appUpdate';
 import type { SearchWindowDefaultSize, SearchWindowSizePreset } from '@/config/searchWindow';
 import type { AppLocale } from '@/i18n';
 import type { BrowserSettingsConfig } from '@/stores/setting/sections/browser';
+import type { PromptPresetsConfig } from '@/stores/setting/sections/promptPresets';
 import {
     cloneJsonSettingsDefault,
     JSON_SETTINGS_SECTIONS,
@@ -39,6 +40,7 @@ export interface GeneralSettingsData {
     appUpdateLastCheckedAt: string | null;
     browserSettings: BrowserSettingsConfig;
     searchSettings: SearchSettingsConfig;
+    promptPresets: PromptPresetsConfig;
 }
 
 type GeneralSettingUpdateRunner = (
@@ -51,11 +53,12 @@ type GeneralSettingFieldValue =
     | boolean
     | null
     | BrowserSettingsConfig
-    | SearchSettingsConfig;
+    | SearchSettingsConfig
+    | PromptPresetsConfig;
 
 type GeneralScalarSettingStateKey = Exclude<
     keyof GeneralSettingsData,
-    'browserSettings' | 'searchSettings' | 'searchWindowDefaultSize'
+    'browserSettings' | 'searchSettings' | 'promptPresets' | 'searchWindowDefaultSize'
 >;
 type GeneralPersistedSettingStateKey = Exclude<
     keyof GeneralSettingsData,
@@ -93,6 +96,7 @@ export interface GeneralSettingsComputedRefs {
     appUpdateLastCheckedAt: ComputedRef<string | null>;
     browserSettings: ComputedRef<BrowserSettingsConfig>;
     searchSettings: ComputedRef<SearchSettingsConfig>;
+    promptPresets: ComputedRef<PromptPresetsConfig>;
 }
 
 export interface GeneralSettingUpdaters {
@@ -107,6 +111,7 @@ export interface GeneralSettingUpdaters {
     updateAppUpdateLastCheckedAt(checkedAt: string | null): Promise<void>;
     updateBrowserSettings(config: BrowserSettingsConfig): Promise<void>;
     updateSearchSettings(config: SearchSettingsConfig): Promise<void>;
+    updatePromptPresets(config: PromptPresetsConfig): Promise<void>;
 }
 
 export interface ScalarSettingDefinitionOptions {

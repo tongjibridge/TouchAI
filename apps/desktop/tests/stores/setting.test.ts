@@ -34,6 +34,7 @@ const EXPECTED_GENERAL_SETTING_KEYS: GeneralSettingKey[] = [
     'app_update_last_checked_at',
     'browser_settings',
     'search_settings',
+    'prompt_presets',
 ];
 
 describe('setting registry', () => {
@@ -124,6 +125,7 @@ describe('setting registry', () => {
             'searchWindowDefaultSize',
             'browserSettings',
             'searchSettings',
+            'promptPresets',
         ]);
 
         expect(GENERAL_SETTING_UPDATER_BINDINGS.map((binding) => binding.exposedName)).toEqual([
@@ -138,6 +140,7 @@ describe('setting registry', () => {
             'updateAppUpdateLastCheckedAt',
             'updateBrowserSettings',
             'updateSearchSettings',
+            'updatePromptPresets',
         ]);
     });
 
