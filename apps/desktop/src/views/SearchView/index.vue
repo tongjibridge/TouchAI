@@ -1391,7 +1391,7 @@
                     sessionHistory.length === 0 &&
                     visiblePromptPresets.length > 0
                 "
-                class="prompt-presets-row mx-2 mt-1 flex flex-wrap gap-1.5"
+                class="prompt-presets-row mt-2 flex flex-wrap gap-1.5 px-3"
                 data-testid="prompt-presets-row"
             >
                 <button
@@ -1399,7 +1399,7 @@
                     :key="preset.id"
                     :data-testid="`prompt-preset-chip-${preset.id}`"
                     type="button"
-                    class="prompt-preset-chip hover:border-primary-400 hover:bg-primary-50 hover:text-primary-700 inline-flex max-w-[240px] items-center rounded-full border border-neutral-300/70 bg-white/80 px-2.5 py-1 text-xs text-neutral-700 transition-colors"
+                    class="prompt-preset-chip hover:border-primary-400 hover:bg-primary-50 hover:text-primary-700 inline-flex max-w-[240px] items-center rounded-full border border-neutral-300/70 bg-white/80 px-3 py-1.5 text-xs text-neutral-700 transition-colors"
                     :title="preset.text"
                     @click="handlePresetClick(preset.text)"
                 >
