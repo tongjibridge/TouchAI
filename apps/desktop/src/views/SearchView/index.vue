@@ -1391,7 +1391,7 @@
                     sessionHistory.length === 0 &&
                     visiblePromptPresets.length > 0
                 "
-                class="prompt-presets-row mt-2 flex flex-wrap gap-1.5 px-3"
+                class="prompt-presets-row mt-2 flex flex-wrap gap-1.5 px-3 pb-3"
                 data-testid="prompt-presets-row"
             >
                 <button
